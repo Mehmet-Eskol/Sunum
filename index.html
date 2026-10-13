@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gömülü Yazılıma Giriş</title>
   <meta name="description" content="Gömülü yazılım temelleri üzerine HTML, CSS ve JavaScript ile hazırlanmış interaktif eğitim sunumu.">
+  <meta name="theme-color" content="#140d08">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -15,18 +16,28 @@
 
   <main class="deck" id="deck">
 
-    <!-- 1. Kapak -->
+    <!-- Kapak -->
     <section class="slide slide-cover" data-title="Kapak">
       <div class="chip-art" aria-hidden="true">
+        <svg class="traces" viewBox="0 0 400 200">
+          <path d="M118 70 H70 V30 H0"/><path d="M118 130 H80 V170 H0"/><path d="M118 100 H0"/>
+          <path d="M282 70 H330 V30 H400"/><path d="M282 130 H320 V170 H400"/><path d="M282 100 H400"/>
+          <circle r="3"><animateMotion dur="2.4s" repeatCount="indefinite" path="M0 30 H70 V70 H118"/></circle>
+          <circle r="3"><animateMotion dur="2s" begin="-.8s" repeatCount="indefinite" path="M0 100 H118"/></circle>
+          <circle r="3"><animateMotion dur="2.6s" begin="-1.3s" repeatCount="indefinite" path="M0 170 H80 V130 H118"/></circle>
+          <circle r="3"><animateMotion dur="2.2s" begin="-.4s" repeatCount="indefinite" path="M282 70 H330 V30 H400"/></circle>
+          <circle r="3"><animateMotion dur="1.8s" begin="-1s" repeatCount="indefinite" path="M282 100 H400"/></circle>
+          <circle r="3"><animateMotion dur="2.5s" begin="-1.7s" repeatCount="indefinite" path="M282 130 H320 V170 H400"/></circle>
+        </svg>
         <div class="chip"><span>MCU</span></div>
       </div>
       <p class="eyebrow">Eğitim Sunumu</p>
       <h1>Gömülü Yazılıma Giriş</h1>
-      <p class="lead">Mikrodenetleyiciler, donanım erişimi, kesmeler, haberleşme protokolleri ve RTOS temelleri</p>
+      <p class="lead">Mikrodenetleyiciler, donanım erişimi, kesmeler, haberleşme protokolleri, RTOS ve gerçek hayattan örnekler</p>
       <p class="hint">Gezinmek için <kbd>←</kbd> <kbd>→</kbd> veya <kbd>Boşluk</kbd> · Tam ekran için <kbd>F</kbd> · Genel bakış için <kbd>O</kbd></p>
     </section>
 
-    <!-- 2. Gündem -->
+    <!-- Gündem -->
     <section class="slide" data-title="Gündem">
       <h2>Gündem</h2>
       <ol class="agenda">
@@ -38,19 +49,29 @@
         <li><span>06</span>Zamanlayıcılar ve PWM</li>
         <li><span>07</span>Haberleşme protokolleri</li>
         <li><span>08</span>RTOS ve bellek yönetimi</li>
-        <li><span>09</span>En iyi uygulamalar</li>
-        <li><span>10</span>Mini quiz</li>
+        <li><span>09</span>Gerçek hayattan örnekler</li>
+        <li><span>10</span>Vaka: Drone uçuş kontrolcüsü</li>
+        <li><span>11</span>Tarihten dersler ve en iyi uygulamalar</li>
+        <li><span>12</span>Mini quiz</li>
       </ol>
     </section>
 
-    <!-- 3. Tanım -->
+    <!-- Tanım -->
     <section class="slide" data-title="Gömülü sistem nedir?">
       <h2>Gömülü Sistem Nedir?</h2>
       <div class="two-col">
         <div>
           <p class="big-quote">Belirli bir görevi yerine getirmek için, daha büyük bir cihazın içine <strong>gömülmüş</strong>, donanım ve yazılımdan oluşan özel amaçlı bilgisayar sistemidir.</p>
+          <div class="ipo" aria-hidden="true">
+            <div class="ipo-node"><b>🌡️</b><span>Algıla</span></div>
+            <div class="flow-link"><i></i><i></i><i></i></div>
+            <div class="ipo-node mcu"><b>MCU</b><span>Karar ver</span></div>
+            <div class="flow-link"><i></i><i></i><i></i></div>
+            <div class="ipo-node"><b class="spin">⚙️</b><span>Harekete geç</span></div>
+          </div>
+          <p class="caption">Her gömülü sistemin temel döngüsü: sensörden oku → işle → çıkışı sür</p>
         </div>
-        <ul class="feature-list">
+        <ul class="feature-list stagger">
           <li><b>Özel amaçlı</b> — tek bir işe odaklanır</li>
           <li><b>Kısıtlı kaynak</b> — KB düzeyinde RAM / Flash</li>
           <li><b>Gerçek zamanlı</b> — zamanında cevap kritik</li>
@@ -61,20 +82,20 @@
       </div>
     </section>
 
-    <!-- 4. Kullanım alanları -->
+    <!-- Kullanım alanları -->
     <section class="slide" data-title="Kullanım alanları">
       <h2>Nerelerde Kullanılır?</h2>
-      <div class="card-grid">
-        <div class="card"><div class="icon">🚗</div><h3>Otomotiv</h3><p>ECU, ABS, airbag, motor kontrol — bir araçta 100+ MCU</p></div>
-        <div class="card"><div class="icon">🏠</div><h3>Akıllı Ev</h3><p>Termostat, akıllı priz, güvenlik kamerası</p></div>
+      <div class="card-grid stagger">
+        <div class="card"><div class="icon">🚗</div><h3>Otomotiv</h3><p>ECU, ABS, airbag, motor kontrol — modern bir araçta 100'e yakın MCU</p></div>
+        <div class="card"><div class="icon">🏠</div><h3>Akıllı Ev</h3><p>Termostat, akıllı priz, kapı kilidi, güvenlik kamerası</p></div>
         <div class="card"><div class="icon">🏥</div><h3>Medikal</h3><p>Kalp pili, insülin pompası, hasta monitörü</p></div>
         <div class="card"><div class="icon">🏭</div><h3>Endüstri</h3><p>PLC, robot kolları, sensör ağları</p></div>
-        <div class="card"><div class="icon">📱</div><h3>Tüketici</h3><p>Akıllı saat, kulaklık, çamaşır makinesi</p></div>
+        <div class="card"><div class="icon">⌚</div><h3>Tüketici</h3><p>Akıllı saat, kablosuz kulaklık, çamaşır makinesi</p></div>
         <div class="card"><div class="icon">🛰️</div><h3>Havacılık</h3><p>Uçuş kontrol, uydu, İHA otopilot</p></div>
       </div>
     </section>
 
-    <!-- 5. MCU vs MPU -->
+    <!-- MCU vs MPU -->
     <section class="slide" data-title="MCU vs MPU">
       <h2>Mikrodenetleyici vs Mikroişlemci</h2>
       <table class="compare">
@@ -88,15 +109,16 @@
           <tr><td>Örnekler</td><td>STM32, ESP32, AVR, PIC, nRF52</td><td>Raspberry Pi (BCM2711), i.MX8</td></tr>
         </tbody>
       </table>
+      <div class="real"><b>🌍 Gerçek hayatta</b> Bir arabada fren, airbag ve cam motorlarını onlarca küçük MCU kontrol ederken; navigasyon ve multimedya ekranı Linux veya Android çalıştıran bir MPU üzerinde koşar.</div>
     </section>
 
-    <!-- 6. Mimari -->
+    <!-- Mimari -->
     <section class="slide" data-title="MCU mimarisi">
       <h2>Mikrodenetleyici Mimarisi</h2>
       <p class="sub">Bir bloğun üzerine gelin veya dokunun</p>
       <div class="arch">
         <div class="arch-core" data-info="Komutları çalıştıran işlem birimi. Örn: ARM Cortex-M4, saat sinyali ile senkron çalışır.">CPU<br><small>Cortex-M</small></div>
-        <div class="arch-bus">Sistem Veri Yolu (AHB / APB)</div>
+        <div class="arch-bus"><span class="packet"></span><span class="packet p2"></span><span class="packet p3 rev"></span>Sistem Veri Yolu (AHB / APB)</div>
         <div class="arch-blocks">
           <div class="arch-block" data-info="Program kodunun saklandığı kalıcı bellek. Güç kesilse de silinmez.">Flash</div>
           <div class="arch-block" data-info="Değişkenlerin, stack ve heap'in tutulduğu geçici bellek.">SRAM</div>
@@ -111,7 +133,7 @@
       </div>
     </section>
 
-    <!-- 7. Araç zinciri -->
+    <!-- Araç zinciri -->
     <section class="slide" data-title="Araç zinciri">
       <h2>Geliştirme Araç Zinciri</h2>
       <div class="pipeline">
@@ -127,12 +149,13 @@
         <div class="arrow">→</div>
         <div class="step"><span class="step-n">6</span><b>Hata Ayıklama</b><small>GDB, OpenOCD</small></div>
       </div>
+      <div class="runner" aria-hidden="true"><span class="runner-file">main.c</span></div>
       <div class="tool-tags">
         <span>STM32CubeIDE</span><span>Keil MDK</span><span>IAR</span><span>PlatformIO</span><span>Arduino IDE</span><span>ESP-IDF</span><span>VS Code</span>
       </div>
     </section>
 
-    <!-- 8. İlk program -->
+    <!-- İlk program -->
     <section class="slide" data-title="İlk program">
       <h2>"Hello World": LED Yakıp Söndürme</h2>
       <div class="two-col">
@@ -164,12 +187,13 @@
           <button class="btn" id="blinkBtn">▶ Çalıştır</button>
         </div>
       </div>
+      <div class="real"><b>🌍 Gerçek hayatta</b> Trafik lambaları, araç sinyal lambaları ve cihazların durum LED'leri tam olarak bu GPIO mantığıyla sürülür. Aynı pin bir LED yerine bir röleyi sürdüğünde kombiyi veya su pompasını açıp kapatır.</div>
     </section>
 
-    <!-- 9. Register / bit işlemleri -->
+    <!-- Register / bit işlemleri -->
     <section class="slide" data-title="Bit işlemleri">
       <h2>Register ve Bit İşlemleri</h2>
-      <p class="sub">8-bit bir register'ın bitlerine tıklayın — C ifadesi otomatik oluşur</p>
+      <p class="sub">8-bit bir register'ın bitlerine tıklayın, değeri anında görün</p>
       <div class="register" id="register"></div>
       <div class="reg-out">
         <div>Hex: <b id="regHex">0x00</b></div>
@@ -182,9 +206,10 @@
         <div><code>REG ^=  (1 &lt;&lt; n);</code><span>Biti tersle (toggle)</span></div>
         <div><code>if (REG &amp; (1 &lt;&lt; n))</code><span>Biti oku (test)</span></div>
       </div>
+      <div class="real"><b>🌍 Gerçek hayatta</b> Bir çamaşır makinesinde tek bir 8-bit durum register'ı "kapak kapalı", "su dolu", "motor dönüyor" gibi 8 farklı bilgiyi aynı anda tutabilir.</div>
     </section>
 
-    <!-- 10. Kesmeler -->
+    <!-- Kesmeler -->
     <section class="slide" data-title="Kesmeler">
       <h2>Kesmeler (Interrupts)</h2>
       <div class="two-col">
@@ -201,7 +226,7 @@
 }</code></pre>
         </div>
         <div class="irq-demo">
-          <div class="timeline" id="timeline">
+          <div class="timeline">
             <div class="lane"><span>main()</span><div class="track" id="mainTrack"></div></div>
             <div class="lane"><span>ISR</span><div class="track" id="isrTrack"></div></div>
           </div>
@@ -209,9 +234,10 @@
           <p class="sub" id="irqLog">Ana döngü çalışıyor…</p>
         </div>
       </div>
+      <div class="real"><b>🌍 Gerçek hayatta</b> Airbag sisteminde çarpışma sensörü bir kesme üretir ve kontrol ünitesi milisaniyeler içinde şişirme kararını verir. Aynı sensörü yoklama ile kontrol etmek, kaçırılamayacak bu olayda kabul edilemez bir gecikme demektir.</div>
     </section>
 
-    <!-- 11. Timer & PWM -->
+    <!-- Timer & PWM -->
     <section class="slide" data-title="Timer ve PWM">
       <h2>Zamanlayıcılar ve PWM</h2>
       <div class="two-col">
@@ -230,15 +256,17 @@
           <label class="range-label"><span>Duty cycle: <b id="dutyVal">50</b>%</span>
             <input type="range" id="dutyRange" min="0" max="100" value="50">
           </label>
-          <div class="pwm-led-wrap">
+          <div class="pwm-out">
             <div class="pwm-led" id="pwmLed"></div>
-            <span>Ortalama voltaj: <b id="vAvg">1.65</b> V</span>
+            <div class="fan" id="fan" aria-hidden="true"><i></i><i></i><i></i></div>
           </div>
+          <span class="pwm-v">Ortalama voltaj: <b id="vAvg">1.65</b> V</span>
         </div>
       </div>
+      <div class="real"><b>🌍 Gerçek hayatta</b> Drone'larda motor hızları, telefonlarda ekran parlaklığı, bilgisayarlarda fan hızı PWM ile ayarlanır. Model servolar 50 Hz'lik sinyalde 1–2 ms'lik darbe genişliğine göre açı alır.</div>
     </section>
 
-    <!-- 12. Haberleşme -->
+    <!-- Haberleşme -->
     <section class="slide" data-title="Haberleşme">
       <h2>Haberleşme Protokolleri</h2>
       <div class="proto-tabs" id="protoTabs">
@@ -250,7 +278,7 @@
       <div class="proto-panel" id="protoPanel"></div>
     </section>
 
-    <!-- 13. RTOS -->
+    <!-- RTOS -->
     <section class="slide" data-title="RTOS">
       <h2>RTOS: Gerçek Zamanlı İşletim Sistemi</h2>
       <div class="two-col">
@@ -279,15 +307,17 @@
   <span class="f">vTaskStartScheduler</span>();
 }</code></pre>
       </div>
+      <div class="gantt" id="gantt" aria-label="Zamanlayıcı animasyonu"></div>
+      <div class="real"><b>🌍 Gerçek hayatta</b> Bir akıllı saatte nabız sensörünü okuma (yüksek öncelik), Bluetooth iletişimi (orta) ve ekran çizimi (düşük) ayrı görevlerdir; RTOS bunları tek çekirdekte eşzamanlıymış gibi çalıştırır.</div>
     </section>
 
-    <!-- 14. Bellek -->
+    <!-- Bellek -->
     <section class="slide" data-title="Bellek">
       <h2>Bellek Düzeni ve <code>volatile</code></h2>
       <div class="two-col">
         <div class="memmap">
           <div class="mem m-stack">Stack ↓<small>yerel değişkenler</small></div>
-          <div class="mem m-free">boş alan</div>
+          <div class="mem m-free">boş alan<span class="collide">⚠ çakışma = stack overflow</span></div>
           <div class="mem m-heap">Heap ↑<small>malloc (dikkat!)</small></div>
           <div class="mem m-bss">.bss<small>sıfır başlangıçlı global</small></div>
           <div class="mem m-data">.data<small>ilk değerli global</small></div>
@@ -306,12 +336,87 @@
       </div>
     </section>
 
-    <!-- 15. En iyi uygulamalar -->
+    <!-- Gerçek hayattan örnekler -->
+    <section class="slide" data-title="Gerçek hayattan örnekler">
+      <h2>Gerçek Hayattan Örnekler</h2>
+      <p class="sub">Bir ürün seçin, içindeki gömülü sistemi inceleyelim</p>
+      <div class="case-tabs" id="caseTabs"></div>
+      <div class="case" id="casePanel"></div>
+    </section>
+
+    <!-- Vaka: Drone -->
+    <section class="slide" data-title="Vaka: Drone">
+      <h2>Vaka: Drone Uçuş Kontrolcüsü</h2>
+      <div class="two-col">
+        <div>
+          <div class="loop" aria-hidden="true">
+            <div class="loop-ring"><div class="loop-orbit"><i></i></div></div>
+            <div class="loop-center"><b>≈ 1 ms</b><small>her döngü</small></div>
+            <div class="loop-step s1"><b>1 · IMU oku</b><small>SPI ile jiroskop + ivme</small></div>
+            <div class="loop-step s2"><b>2 · Füzyon</b><small>açı tahmini</small></div>
+            <div class="loop-step s3"><b>3 · PID</b><small>hata → düzeltme</small></div>
+            <div class="loop-step s4"><b>4 · Motorlar</b><small>PWM / DShot → ESC</small></div>
+          </div>
+          <div class="real"><b>🌍 Gerçek hayatta</b> Betaflight, PX4 ve ArduPilot gibi açık kaynak uçuş yazılımları STM32 tabanlı kartlarda bu döngüyü saniyede binlerce kez çalıştırır.</div>
+        </div>
+        <div class="demo">
+          <svg class="drone" viewBox="0 0 300 150" aria-label="Drone simülasyonu">
+            <line class="horizon" x1="0" y1="90" x2="300" y2="90"/>
+            <g id="droneBody">
+              <line class="arm" x1="60" y1="90" x2="240" y2="90"/>
+              <rect class="body" x="115" y="80" width="70" height="20" rx="7"/>
+              <rect class="motor" x="52" y="74" width="16" height="16" rx="3"/>
+              <rect class="motor" x="232" y="74" width="16" height="16" rx="3"/>
+              <ellipse class="prop" cx="60" cy="70" rx="38" ry="3.5"/>
+              <ellipse class="prop" cx="240" cy="70" rx="38" ry="3.5"/>
+              <circle class="status" cx="150" cy="90" r="3.5"/>
+            </g>
+          </svg>
+          <svg class="plot" id="plot" viewBox="0 0 300 80" preserveAspectRatio="none"></svg>
+          <div class="drone-read">Açı: <b id="droneAngle">0.0°</b> <span id="droneState"></span></div>
+          <div class="btn-row">
+            <button class="btn" id="windBtn">💨 Rüzgâr</button>
+            <button class="btn ghost" id="pidBtn">PID: Açık</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tarihten dersler -->
+    <section class="slide" data-title="Tarihten dersler">
+      <h2>Tarihten Dersler</h2>
+      <p class="sub">Gömülü yazılım hatalarının gerçek hayattaki bedeli</p>
+      <div class="lesson-grid stagger">
+        <div class="lesson">
+          <span class="year">1996</span><h3>Ariane 5 (Uçuş 501)</h3>
+          <p>Ariane 4'ten aynen alınan kod, 64-bit ondalık hız değerini 16-bit tam sayıya çevirirken taştı. Roket kalkıştan yaklaşık 37 saniye sonra imha edildi.</p>
+          <div class="ovf">int16_t v = <b id="ovf">32765</b></div>
+          <em>Ders: Veri tiplerini ve değer aralıklarını asla varsayma.</em>
+        </div>
+        <div class="lesson">
+          <span class="year">1997</span><h3>Mars Pathfinder</h3>
+          <p>Düşük öncelikli bir görev mutex'i tutarken yüksek öncelikli görev bekledi (öncelik terslenmesi). Watchdog sistemi defalarca resetledi; Dünya'dan gönderilen yamayla öncelik kalıtımı açılarak düzeltildi.</p>
+          <em>Ders: RTOS senkronizasyonunu dikkatle tasarla; watchdog sistemi kurtarabilir.</em>
+        </div>
+        <div class="lesson">
+          <span class="year">1985–87</span><h3>Therac-25</h3>
+          <p>Radyoterapi cihazındaki yarış durumu (race condition) hatası, hastaların aşırı doz radyasyon almasına yol açtı. Önceki modellerdeki donanım güvenlik kilitleri kaldırılıp yazılıma güvenilmişti.</p>
+          <em>Ders: Güvenlik-kritik sistemlerde bağımsız donanım korumaları şart.</em>
+        </div>
+        <div class="lesson">
+          <span class="year">2013</span><h3>Toyota davası</h3>
+          <p>Ani hızlanma davasındaki bilirkişi incelemesi, motor kontrol yazılımında stack taşması riski, binlerce global değişken ve yetersiz watchdog tasarımı tespit etti.</p>
+          <em>Ders: MISRA C, statik analiz ve bellek bütçesi kullan.</em>
+        </div>
+      </div>
+    </section>
+
+    <!-- En iyi uygulamalar -->
     <section class="slide" data-title="En iyi uygulamalar">
       <h2>En İyi Uygulamalar</h2>
-      <div class="card-grid">
+      <div class="card-grid stagger">
         <div class="card"><div class="icon">⏱️</div><h3>ISR'leri kısa tut</h3><p>Bayrak kaldır, işi ana döngüde yap</p></div>
-        <div class="card"><div class="icon">🐕</div><h3>Watchdog kullan</h3><p>Kilitlenmelerden otomatik kurtul</p></div>
+        <div class="card"><div class="icon">🐕</div><h3>Watchdog kullan</h3><p>Kilitlenmelerden otomatik kurtul</p><div class="wdt" aria-hidden="true"><i></i></div></div>
         <div class="card"><div class="icon">🧱</div><h3>Katmanlı mimari</h3><p>HAL → Sürücü → Uygulama</p></div>
         <div class="card"><div class="icon">📏</div><h3>Standartlar</h3><p>MISRA C, sabit genişlikli tipler (<code>uint32_t</code>)</p></div>
         <div class="card"><div class="icon">🔋</div><h3>Güç yönetimi</h3><p>Sleep / Stop modlarını kullan</p></div>
@@ -319,13 +424,13 @@
       </div>
     </section>
 
-    <!-- 16. Quiz -->
+    <!-- Quiz -->
     <section class="slide" data-title="Quiz">
       <h2>Mini Quiz</h2>
       <div class="quiz" id="quiz"></div>
     </section>
 
-    <!-- 17. Kapanış -->
+    <!-- Kapanış -->
     <section class="slide slide-cover" data-title="Teşekkürler">
       <h1>Teşekkürler!</h1>
       <p class="lead">Sorularınız?</p>
@@ -344,7 +449,7 @@
 
   <nav class="controls">
     <button id="prevBtn" aria-label="Önceki slayt">‹</button>
-    <span id="counter">1 / 17</span>
+    <span id="counter">1 / 20</span>
     <button id="nextBtn" aria-label="Sonraki slayt">›</button>
   </nav>
 

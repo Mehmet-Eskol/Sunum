@@ -2,25 +2,30 @@
 
 HTML, CSS ve saf JavaScript ile hazırlanmış, kütüphane gerektirmeyen interaktif bir eğitim sunumu.
 
-## İçerik (17 slayt)
+## İçerik (20 slayt)
 
-1. Kapak
+1. Kapak — *veri akan devre izleri animasyonu*
 2. Gündem
-3. Gömülü sistem nedir?
+3. Gömülü sistem nedir? — *Algıla → Karar ver → Harekete geç animasyonu*
 4. Kullanım alanları
 5. Mikrodenetleyici (MCU) vs Mikroişlemci (MPU)
-6. MCU mimarisi — *etkileşimli blok şeması*
-7. Geliştirme araç zinciri
+6. MCU mimarisi — *etkileşimli blok şeması, veri yolunda akan paketler*
+7. Geliştirme araç zinciri — *derleme hattında ilerleyen dosya*
 8. İlk program: LED yakıp söndürme — *LED simülasyonu*
 9. Register ve bit işlemleri — *tıklanabilir 8-bit register*
 10. Kesmeler (Interrupts) — *canlı zaman çizelgesi*
-11. Zamanlayıcılar ve PWM — *duty cycle kaydırıcısı ve dalga formu*
-12. Haberleşme protokolleri: UART, I²C, SPI, CAN — *sekmeli bağlantı şemaları*
-13. RTOS (FreeRTOS örneği)
-14. Bellek düzeni ve `volatile`
-15. En iyi uygulamalar
-16. Mini quiz
-17. Teşekkürler & kaynaklar
+11. Zamanlayıcılar ve PWM — *dalga formu, LED parlaklığı ve fan hızı*
+12. Haberleşme protokolleri: UART, I²C, SPI, CAN — *hatlarda akan veri bitleri*
+13. RTOS — *canlı görev zamanlayıcı (Gantt) animasyonu*
+14. Bellek düzeni ve `volatile` — *büyüyen stack/heap ve çakışma animasyonu*
+15. Gerçek hayattan örnekler — *termostat, ABS, akıllı bileklik, çamaşır makinesi, kalp pili*
+16. Vaka: Drone uçuş kontrolcüsü — *canlı PID simülasyonu (rüzgâr / PID aç-kapat)*
+17. Tarihten dersler — *Ariane 5, Mars Pathfinder, Therac-25, Toyota*
+18. En iyi uygulamalar
+19. Mini quiz
+20. Teşekkürler & kaynaklar
+
+Konu slaytlarında "🌍 Gerçek hayatta" kutuları, anlatılan kavramın günlük hayattaki karşılığını gösterir.
 
 ## Çalıştırma
 
