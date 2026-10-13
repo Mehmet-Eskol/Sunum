@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gömülü Yazılıma Giriş</title>
+  <meta name="description" content="Gömülü yazılım temelleri üzerine HTML, CSS ve JavaScript ile hazırlanmış interaktif eğitim sunumu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+  <main class="deck" id="deck">
+
+    <!-- 1. Kapak -->
+    <section class="slide slide-cover" data-title="Kapak">
+      <div class="chip-art" aria-hidden="true">
+        <div class="chip"><span>MCU</span></div>
+      </div>
+      <p class="eyebrow">Eğitim Sunumu</p>
+      <h1>Gömülü Yazılıma Giriş</h1>
+      <p class="lead">Mikrodenetleyiciler, donanım erişimi, kesmeler, haberleşme protokolleri ve RTOS temelleri</p>
+      <p class="hint">Gezinmek için <kbd>←</kbd> <kbd>→</kbd> veya <kbd>Boşluk</kbd> · Tam ekran için <kbd>F</kbd> · Genel bakış için <kbd>O</kbd></p>
+    </section>
+
+    <!-- 2. Gündem -->
+    <section class="slide" data-title="Gündem">
+      <h2>Gündem</h2>
+      <ol class="agenda">
+        <li><span>01</span>Gömülü sistem nedir?</li>
+        <li><span>02</span>Mikrodenetleyici mimarisi</li>
+        <li><span>03</span>Geliştirme araç zinciri</li>
+        <li><span>04</span>GPIO ve register erişimi</li>
+        <li><span>05</span>Kesmeler (Interrupts)</li>
+        <li><span>06</span>Zamanlayıcılar ve PWM</li>
+        <li><span>07</span>Haberleşme protokolleri</li>
+        <li><span>08</span>RTOS ve bellek yönetimi</li>
+        <li><span>09</span>En iyi uygulamalar</li>
+        <li><span>10</span>Mini quiz</li>
+      </ol>
+    </section>
+
+    <!-- 3. Tanım -->
+    <section class="slide" data-title="Gömülü sistem nedir?">
+      <h2>Gömülü Sistem Nedir?</h2>
+      <div class="two-col">
+        <div>
+          <p class="big-quote">Belirli bir görevi yerine getirmek için, daha büyük bir cihazın içine <strong>gömülmüş</strong>, donanım ve yazılımdan oluşan özel amaçlı bilgisayar sistemidir.</p>
+        </div>
+        <ul class="feature-list">
+          <li><b>Özel amaçlı</b> — tek bir işe odaklanır</li>
+          <li><b>Kısıtlı kaynak</b> — KB düzeyinde RAM / Flash</li>
+          <li><b>Gerçek zamanlı</b> — zamanında cevap kritik</li>
+          <li><b>Düşük güç</b> — pille yıllarca çalışabilir</li>
+          <li><b>Güvenilir</b> — yıllarca kesintisiz çalışma</li>
+          <li><b>Donanıma yakın</b> — doğrudan register erişimi</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Kullanım alanları -->
+    <section class="slide" data-title="Kullanım alanları">
+      <h2>Nerelerde Kullanılır?</h2>
+      <div class="card-grid">
+        <div class="card"><div class="icon">🚗</div><h3>Otomotiv</h3><p>ECU, ABS, airbag, motor kontrol — bir araçta 100+ MCU</p></div>
+        <div class="card"><div class="icon">🏠</div><h3>Akıllı Ev</h3><p>Termostat, akıllı priz, güvenlik kamerası</p></div>
+        <div class="card"><div class="icon">🏥</div><h3>Medikal</h3><p>Kalp pili, insülin pompası, hasta monitörü</p></div>
+        <div class="card"><div class="icon">🏭</div><h3>Endüstri</h3><p>PLC, robot kolları, sensör ağları</p></div>
+        <div class="card"><div class="icon">📱</div><h3>Tüketici</h3><p>Akıllı saat, kulaklık, çamaşır makinesi</p></div>
+        <div class="card"><div class="icon">🛰️</div><h3>Havacılık</h3><p>Uçuş kontrol, uydu, İHA otopilot</p></div>
+      </div>
+    </section>
+
+    <!-- 5. MCU vs MPU -->
+    <section class="slide" data-title="MCU vs MPU">
+      <h2>Mikrodenetleyici vs Mikroişlemci</h2>
+      <table class="compare">
+        <thead><tr><th></th><th>Mikrodenetleyici (MCU)</th><th>Mikroişlemci (MPU)</th></tr></thead>
+        <tbody>
+          <tr><td>Yapı</td><td>CPU + RAM + Flash + çevre birimleri tek çipte</td><td>Sadece CPU, harici bellek gerekir</td></tr>
+          <tr><td>Saat hızı</td><td>MHz düzeyi (8 – 480 MHz)</td><td>GHz düzeyi</td></tr>
+          <tr><td>Bellek</td><td>KB – birkaç MB</td><td>GB düzeyi</td></tr>
+          <tr><td>İşletim sistemi</td><td>Bare-metal veya RTOS</td><td>Linux, Android, Windows</td></tr>
+          <tr><td>Güç tüketimi</td><td>µA – mA</td><td>Watt düzeyi</td></tr>
+          <tr><td>Örnekler</td><td>STM32, ESP32, AVR, PIC, nRF52</td><td>Raspberry Pi (BCM2711), i.MX8</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 6. Mimari -->
+    <section class="slide" data-title="MCU mimarisi">
+      <h2>Mikrodenetleyici Mimarisi</h2>
+      <p class="sub">Bir bloğun üzerine gelin veya dokunun</p>
+      <div class="arch">
+        <div class="arch-core" data-info="Komutları çalıştıran işlem birimi. Örn: ARM Cortex-M4, saat sinyali ile senkron çalışır.">CPU<br><small>Cortex-M</small></div>
+        <div class="arch-bus">Sistem Veri Yolu (AHB / APB)</div>
+        <div class="arch-blocks">
+          <div class="arch-block" data-info="Program kodunun saklandığı kalıcı bellek. Güç kesilse de silinmez.">Flash</div>
+          <div class="arch-block" data-info="Değişkenlerin, stack ve heap'in tutulduğu geçici bellek.">SRAM</div>
+          <div class="arch-block" data-info="Genel amaçlı giriş/çıkış pinleri: LED, buton, röle kontrolü.">GPIO</div>
+          <div class="arch-block" data-info="Zaman ölçme, periyodik kesme ve PWM sinyali üretme.">Timer</div>
+          <div class="arch-block" data-info="Analog sinyali (örn. sıcaklık sensörü voltajı) sayısal değere çevirir.">ADC</div>
+          <div class="arch-block" data-info="Seri haberleşme birimleri: UART, I²C, SPI, CAN, USB.">UART / SPI / I²C</div>
+          <div class="arch-block" data-info="Kesmeleri önceliklendirip CPU'ya ileten denetleyici (NVIC).">NVIC</div>
+          <div class="arch-block" data-info="Yazılım kilitlenirse sistemi otomatik resetleyen bekçi köpeği zamanlayıcısı.">Watchdog</div>
+        </div>
+        <div class="arch-info" id="archInfo">Her blok, bellek haritasında belirli adreslere eşlenmiştir (memory-mapped I/O).</div>
+      </div>
+    </section>
+
+    <!-- 7. Araç zinciri -->
+    <section class="slide" data-title="Araç zinciri">
+      <h2>Geliştirme Araç Zinciri</h2>
+      <div class="pipeline">
+        <div class="step"><span class="step-n">1</span><b>Kaynak Kod</b><small>main.c, drivers.c</small></div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="step-n">2</span><b>Derleyici</b><small>arm-none-eabi-gcc</small></div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="step-n">3</span><b>Linker</b><small>linker script (.ld)</small></div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="step-n">4</span><b>İkili Dosya</b><small>.elf / .bin / .hex</small></div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="step-n">5</span><b>Yükleme</b><small>ST-Link, J-Link</small></div>
+        <div class="arrow">→</div>
+        <div class="step"><span class="step-n">6</span><b>Hata Ayıklama</b><small>GDB, OpenOCD</small></div>
+      </div>
+      <div class="tool-tags">
+        <span>STM32CubeIDE</span><span>Keil MDK</span><span>IAR</span><span>PlatformIO</span><span>Arduino IDE</span><span>ESP-IDF</span><span>VS Code</span>
+      </div>
+    </section>
+
+    <!-- 8. İlk program -->
+    <section class="slide" data-title="İlk program">
+      <h2>"Hello World": LED Yakıp Söndürme</h2>
+      <div class="two-col">
+<pre class="code"><code><span class="c">// STM32 — PA5 pinindeki LED'i yak/söndür</span>
+<span class="k">#include</span> <span class="s">"stm32f4xx.h"</span>
+
+<span class="t">int</span> <span class="f">main</span>(<span class="t">void</span>) {
+  <span class="c">// 1) GPIOA saatini aç</span>
+  RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+
+  <span class="c">// 2) PA5'i çıkış yap (MODER5 = 01)</span>
+  GPIOA-&gt;MODER &amp;= ~(<span class="n">3U</span> &lt;&lt; (<span class="n">5</span> * <span class="n">2</span>));
+  GPIOA-&gt;MODER |=  (<span class="n">1U</span> &lt;&lt; (<span class="n">5</span> * <span class="n">2</span>));
+
+  <span class="k">while</span> (<span class="n">1</span>) {           <span class="c">// süper döngü</span>
+    GPIOA-&gt;ODR ^= (<span class="n">1U</span> &lt;&lt; <span class="n">5</span>); <span class="c">// toggle</span>
+    <span class="f">delay_ms</span>(<span class="n">500</span>);
+  }
+}</code></pre>
+        <div class="demo">
+          <div class="board">
+            <div class="board-label">NUCLEO-F401</div>
+            <div class="led" id="led"></div>
+            <div class="led-label">PA5</div>
+          </div>
+          <label class="range-label"><span>Gecikme: <b id="delayVal">500</b> ms</span>
+            <input type="range" id="delayRange" min="50" max="1500" step="50" value="500">
+          </label>
+          <button class="btn" id="blinkBtn">▶ Çalıştır</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Register / bit işlemleri -->
+    <section class="slide" data-title="Bit işlemleri">
+      <h2>Register ve Bit İşlemleri</h2>
+      <p class="sub">8-bit bir register'ın bitlerine tıklayın — C ifadesi otomatik oluşur</p>
+      <div class="register" id="register"></div>
+      <div class="reg-out">
+        <div>Hex: <b id="regHex">0x00</b></div>
+        <div>Dec: <b id="regDec">0</b></div>
+        <div>Bin: <b id="regBin">0b00000000</b></div>
+      </div>
+      <div class="bit-ops">
+        <div><code>REG |=  (1 &lt;&lt; n);</code><span>Biti 1 yap (set)</span></div>
+        <div><code>REG &amp;= ~(1 &lt;&lt; n);</code><span>Biti 0 yap (clear)</span></div>
+        <div><code>REG ^=  (1 &lt;&lt; n);</code><span>Biti tersle (toggle)</span></div>
+        <div><code>if (REG &amp; (1 &lt;&lt; n))</code><span>Biti oku (test)</span></div>
+      </div>
+    </section>
+
+    <!-- 10. Kesmeler -->
+    <section class="slide" data-title="Kesmeler">
+      <h2>Kesmeler (Interrupts)</h2>
+      <div class="two-col">
+        <div>
+          <div class="vs">
+            <div class="vs-box bad"><h3>Polling (Yoklama)</h3><p>CPU sürekli "buton basıldı mı?" diye sorar. Zaman ve enerji israfı.</p></div>
+            <div class="vs-box good"><h3>Interrupt (Kesme)</h3><p>Olay gerçekleşince donanım CPU'yu uyarır, ISR çalışır, ana işe dönülür.</p></div>
+          </div>
+<pre class="code small"><code><span class="t">volatile</span> <span class="t">uint8_t</span> flag = <span class="n">0</span>;
+
+<span class="t">void</span> <span class="f">EXTI15_10_IRQHandler</span>(<span class="t">void</span>) {
+  EXTI-&gt;PR = (<span class="n">1U</span> &lt;&lt; <span class="n">13</span>); <span class="c">// bayrağı temizle</span>
+  flag = <span class="n">1</span>;               <span class="c">// kısa tut!</span>
+}</code></pre>
+        </div>
+        <div class="irq-demo">
+          <div class="timeline" id="timeline">
+            <div class="lane"><span>main()</span><div class="track" id="mainTrack"></div></div>
+            <div class="lane"><span>ISR</span><div class="track" id="isrTrack"></div></div>
+          </div>
+          <button class="btn" id="irqBtn">⚡ Kesme Tetikle</button>
+          <p class="sub" id="irqLog">Ana döngü çalışıyor…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Timer & PWM -->
+    <section class="slide" data-title="Timer ve PWM">
+      <h2>Zamanlayıcılar ve PWM</h2>
+      <div class="two-col">
+        <div>
+          <p><b>PWM (Darbe Genişlik Modülasyonu)</b>, sabit frekanslı bir kare dalganın <b>doluluk oranını (duty cycle)</b> değiştirerek ortalama gücü kontrol eder.</p>
+          <ul class="feature-list compact">
+            <li>LED parlaklığı</li>
+            <li>DC motor hız kontrolü</li>
+            <li>Servo motor açısı</li>
+            <li>Buzzer ile ses üretimi</li>
+          </ul>
+          <div class="formula">f<sub>PWM</sub> = f<sub>CLK</sub> / ((PSC+1) · (ARR+1))</div>
+        </div>
+        <div class="demo">
+          <svg class="pwm-wave" id="pwmWave" viewBox="0 0 400 120" preserveAspectRatio="none"></svg>
+          <label class="range-label"><span>Duty cycle: <b id="dutyVal">50</b>%</span>
+            <input type="range" id="dutyRange" min="0" max="100" value="50">
+          </label>
+          <div class="pwm-led-wrap">
+            <div class="pwm-led" id="pwmLed"></div>
+            <span>Ortalama voltaj: <b id="vAvg">1.65</b> V</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Haberleşme -->
+    <section class="slide" data-title="Haberleşme">
+      <h2>Haberleşme Protokolleri</h2>
+      <div class="proto-tabs" id="protoTabs">
+        <button class="active" data-p="uart">UART</button>
+        <button data-p="i2c">I²C</button>
+        <button data-p="spi">SPI</button>
+        <button data-p="can">CAN</button>
+      </div>
+      <div class="proto-panel" id="protoPanel"></div>
+    </section>
+
+    <!-- 13. RTOS -->
+    <section class="slide" data-title="RTOS">
+      <h2>RTOS: Gerçek Zamanlı İşletim Sistemi</h2>
+      <div class="two-col">
+        <div>
+          <p>Süper döngü karmaşıklaştığında, işleri <b>görevlere (task)</b> bölen ve <b>öncelik tabanlı</b> zamanlayan bir çekirdek kullanılır.</p>
+          <ul class="feature-list compact">
+            <li><b>Task</b> — bağımsız iş parçacığı</li>
+            <li><b>Scheduler</b> — önceliğe göre CPU paylaşımı</li>
+            <li><b>Queue</b> — görevler arası veri aktarımı</li>
+            <li><b>Semaphore / Mutex</b> — senkronizasyon</li>
+          </ul>
+          <div class="tool-tags left"><span>FreeRTOS</span><span>Zephyr</span><span>ThreadX</span><span>RT-Thread</span></div>
+        </div>
+<pre class="code small"><code><span class="t">void</span> <span class="f">vSensorTask</span>(<span class="t">void</span> *p) {
+  <span class="k">for</span> (;;) {
+    <span class="t">int16_t</span> t = <span class="f">read_temp</span>();
+    <span class="f">xQueueSend</span>(q, &amp;t, <span class="n">0</span>);
+    <span class="f">vTaskDelay</span>(<span class="f">pdMS_TO_TICKS</span>(<span class="n">100</span>));
+  }
+}
+
+<span class="t">int</span> <span class="f">main</span>(<span class="t">void</span>) {
+  q = <span class="f">xQueueCreate</span>(<span class="n">10</span>, <span class="k">sizeof</span>(<span class="t">int16_t</span>));
+  <span class="f">xTaskCreate</span>(vSensorTask, <span class="s">"sens"</span>, <span class="n">256</span>,
+              <span class="k">NULL</span>, <span class="n">2</span>, <span class="k">NULL</span>);
+  <span class="f">vTaskStartScheduler</span>();
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- 14. Bellek -->
+    <section class="slide" data-title="Bellek">
+      <h2>Bellek Düzeni ve <code>volatile</code></h2>
+      <div class="two-col">
+        <div class="memmap">
+          <div class="mem m-stack">Stack ↓<small>yerel değişkenler</small></div>
+          <div class="mem m-free">boş alan</div>
+          <div class="mem m-heap">Heap ↑<small>malloc (dikkat!)</small></div>
+          <div class="mem m-bss">.bss<small>sıfır başlangıçlı global</small></div>
+          <div class="mem m-data">.data<small>ilk değerli global</small></div>
+          <div class="mem m-text">.text / .rodata<small>kod ve sabitler — Flash</small></div>
+        </div>
+        <div>
+          <h3 class="accent">volatile neden önemli?</h3>
+          <p>Derleyiciye "bu değişken senin bilgin dışında değişebilir, her seferinde bellekten oku" der.</p>
+          <ul class="feature-list compact">
+            <li>Donanım register'ları</li>
+            <li>ISR ile paylaşılan değişkenler</li>
+            <li>RTOS görevleri arasında paylaşılan veriler</li>
+          </ul>
+          <p class="warn">⚠️ Gömülü sistemlerde dinamik bellek (<code>malloc</code>) parçalanmaya yol açar; statik tahsis tercih edilir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. En iyi uygulamalar -->
+    <section class="slide" data-title="En iyi uygulamalar">
+      <h2>En İyi Uygulamalar</h2>
+      <div class="card-grid">
+        <div class="card"><div class="icon">⏱️</div><h3>ISR'leri kısa tut</h3><p>Bayrak kaldır, işi ana döngüde yap</p></div>
+        <div class="card"><div class="icon">🐕</div><h3>Watchdog kullan</h3><p>Kilitlenmelerden otomatik kurtul</p></div>
+        <div class="card"><div class="icon">🧱</div><h3>Katmanlı mimari</h3><p>HAL → Sürücü → Uygulama</p></div>
+        <div class="card"><div class="icon">📏</div><h3>Standartlar</h3><p>MISRA C, sabit genişlikli tipler (<code>uint32_t</code>)</p></div>
+        <div class="card"><div class="icon">🔋</div><h3>Güç yönetimi</h3><p>Sleep / Stop modlarını kullan</p></div>
+        <div class="card"><div class="icon">🧪</div><h3>Test et</h3><p>Unit test (Unity, CppUTest), HIL testleri</p></div>
+      </div>
+    </section>
+
+    <!-- 16. Quiz -->
+    <section class="slide" data-title="Quiz">
+      <h2>Mini Quiz</h2>
+      <div class="quiz" id="quiz"></div>
+    </section>
+
+    <!-- 17. Kapanış -->
+    <section class="slide slide-cover" data-title="Teşekkürler">
+      <h1>Teşekkürler!</h1>
+      <p class="lead">Sorularınız?</p>
+      <div class="resources">
+        <h3>Önerilen Kaynaklar</h3>
+        <ul>
+          <li><i>Making Embedded Systems</i> — Elecia White</li>
+          <li><i>The Definitive Guide to ARM Cortex-M3/M4</i> — Joseph Yiu</li>
+          <li><i>Mastering the FreeRTOS Real Time Kernel</i> — freertos.org</li>
+          <li>Pratik: Arduino Uno, STM32 Nucleo, ESP32 DevKit kartları</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="controls">
+    <button id="prevBtn" aria-label="Önceki slayt">‹</button>
+    <span id="counter">1 / 17</span>
+    <button id="nextBtn" aria-label="Sonraki slayt">›</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
